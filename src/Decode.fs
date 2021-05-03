@@ -324,7 +324,7 @@ module Decode =
         fun path value ->
             if Helpers.isObject value then
                 let fieldValue = Helpers.getField fieldName value
-                if Helpers.isUndefined fieldValue then Ok None
+                if Helpers.isNullValue fieldValue then Ok None
                 else decodeMaybeNull (path + "." + fieldName) decoder fieldValue
             else
                 Error(path, BadType("an object", value))
